@@ -17,7 +17,7 @@ class QuestionPage extends Component {
         e.preventDefault()
         const { question, dispatch } = this.props
         const { value } = this.state
-        
+
         dispatch(handleAnswerQuestion(
             question.id,
             value
@@ -28,7 +28,7 @@ class QuestionPage extends Component {
 
     render() {
 
-        const { question, answered, questionAuthor } = this.props
+        const { question, answer, questionAuthor } = this.props
         const { value } = this.state
 
         if (question === null) {
@@ -54,24 +54,29 @@ class QuestionPage extends Component {
                     className='avatar'
                 />
 
-                {(!!answered) ?
+                {(!!answer) ?
                     <div>
                         <h1>Results:</h1>
                         <div>
+                            <div> You Answered: {answer === 'optionOne' ? 'Option One' : 'Option Two'} </div>
+                            <br></br>
+
                             <div>
-                                <span>Would you rather {optionOne.text}?</span>
+                                <span>Option One: Would you rather {optionOne.text}?</span>
                                 <div>{((optionOneVotes / total) * 100).toFixed(2)}%</div>
                                 <div>{optionOneVotes} out of {total} votes</div>
                             </div>
+                            <br></br>
                             <div>
-                                <span>Would you rather {optionTwo.text}?</span>
+                                <span>Option Two: Would you rather {optionTwo.text}?</span>
                                 <div>{((optionTwoVotes / total) * 100).toFixed(2)}%</div>
                                 <div><span>{optionTwoVotes} out of {total} votes</span></div>
                             </div>
+
                         </div>
 
                     </div>
-                    : <form onSubmit={this.submitAnswer }>
+                    : <form onSubmit={this.submitAnswer}>
                         <div> <span>Would You Rather...</span> </div>
                         <div className="radio" onChange={this.handleChange}>
                             <div><input type="radio" value="optionOne" checked={value === 'optionOne'} /> ...{optionOne.text}?</div>
@@ -94,7 +99,7 @@ const mapStateToProps = ({ authedUser, questions, users }, props) => {
     return {
         question: question ? question : null,
         questionAuthor: question ? users[question.author] : null,
-        answered: question ? answers[question.id] : null
+        answer: question ? answers[question.id] : null
     }
 }
 
