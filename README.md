@@ -13,11 +13,32 @@ Leaderboard - This page you can view who has the most "points". That is...the mo
 Dashboard - Here you can view you Answered/Unanswered questions. Click the Toggle button to view questions from both categories. Click 'View Poll' to answer question or view results.
 Logout - Click logout to go back to the login page.
 
-Please follow the Getting Started section to ensure the project will run without errors.
+## Installing Dependencies
 
-## Getting Started
+If you are using Yarn, run the following command:
 
-How to get up and running with this project:
+```
+yarn install
+```
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+Otherwise, if you are using NPM:
+
+```
+npm install
+```
+
+## Running The App
+
+If you are using Yarn, run the following command:
+
+```
+yarn start
+```
+
+Otherwise, if you are using NPM:
+
+```
+npm start
+```
+
+Either of those runs the app in the development mode. You can then open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits and you will also see any lint errors in the console.
